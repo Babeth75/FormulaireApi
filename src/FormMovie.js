@@ -13,8 +13,10 @@ class FormMovie extends React.Component {
         }
         /*Permet à nos fonctions de réagir au changement de notre composant
         On le bind avec le mot clé this */
-        this.onChange = this.onChange.bind(this);
-        this.submitForm = this.submitForm.bind(this);
+        /* Plus besoin en ES6 */
+        
+        //this.onChange = this.onChange.bind(this);
+        //this.submitForm = this.submitForm.bind(this);
     }
 
     //Gestion de la soumission du formulaire
@@ -52,10 +54,13 @@ class FormMovie extends React.Component {
     }
 
     onChange = (event) => {
+        event.preventDefault();
         this.setState({
+            // Récupération des name dans input
+            // Pour que le nom de la state soit dynamique la récupération est en crochet
+            // Resultat event.target.name
             [event.target.name]: event.target.value,
         });
-        event.preventDefault();
         console.log("changement " + [event.target.name])
     }
 
